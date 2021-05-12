@@ -12,10 +12,17 @@ class StringCalculator
         $sum = 0;
 
         if ( "" !== $string){
-            $number = explode(",", $string);
+            $re = '/\n/m';
+            $subst = ',';
 
-            for($i = 0, $iMax = count($number); $i < $iMax; $i++ ){
-                $sum += (int) $number[$i];
+            $result = preg_replace($re, $subst, $string);
+
+            if( !strpos( $result , ',,')) {
+                $number = explode(",", $result);
+
+                foreach ($number as $iValue) {
+                    $sum += (int)$iValue;
+                }
             }
         }
 
