@@ -12,17 +12,36 @@ class StringCalculator
         $sum = 0;
 
         if ( "" !== $string){
-            $re = '/\n/m';
-            $subst = ',';
 
-            $result = preg_replace($re, $subst, $string);
+            if(1 === preg_match("/^(\/\/[!\"#$%&'*+,.\/:;=?@^_`|~-]\n\d)/", $string)){
 
-            if( !strpos( $result , ',,')) {
-                $number = explode(",", $result);
+                $delimiter = $string[2];
 
-                foreach ($number as $iValue) {
-                    $sum += (int)$iValue;
+                $sum = $this->explodeString($sum,$delimiter,$string);
+            } else {
+                $re = '/\n/m';
+                $subst = ',';
+
+                $result = preg_replace($re, $subst, $string);
+
+                if( !strpos( $result , ',,')) {
+
+                    $sum = $this->explodeString($sum,",",$result);
                 }
+            }
+
+        }
+
+        return $sum;
+    }
+
+    public function explodeString(int $sum, string $delimiter, string $string): int
+    {
+        $number = explode($delimiter, $string);
+
+        if( !is_null( $number ) ) {
+            foreach ($number as $value){
+                $sum += (int) $value;
             }
         }
 
