@@ -29,4 +29,11 @@ class StringCalculatorTest extends TestCase
         self::assertSame(3, $numbers->Add("1,2"));
     }
 
+    public function testAddIfStringHasUnknownAmountNumbers(): void
+    {
+        $numbers = new StringCalculator();
+
+        self::assertSame(14, $numbers->Add("2,2,5,5"));
+    }
+
 }
