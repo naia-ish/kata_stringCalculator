@@ -11,12 +11,12 @@ class StringCalculator
     {
         $sum = 0;
 
-        if( 1 === strlen($string) ) {
-            $sum = (int) $string;
-        } elseif ( 3 === strlen($string)) {
+        if ( "" !== $string){
             $number = explode(",", $string);
-            
-            $sum += (int) $number[0] + (int) $number[1];
+
+            for($i = 0, $iMax = count($number); $i < $iMax; $i++ ){
+                $sum += (int) $number[$i];
+            }
         }
 
         return $sum;
