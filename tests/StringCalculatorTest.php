@@ -15,10 +15,18 @@ class StringCalculatorTest extends TestCase
         self::assertSame(0, $numbers->Add(""));
     }
 
-    public function testAddIfStringIsOneNumber(): void
+    public function testAddIfStringHasOneNumber(): void
     {
         $numbers = new StringCalculator();
 
         self::assertSame(1, $numbers->Add("1"));
     }
+
+    public function testAddIfStringHasTwoNumbers(): void
+    {
+        $numbers = new StringCalculator();
+
+        self::assertSame(3, $numbers->Add("1,2"));
+    }
+
 }
