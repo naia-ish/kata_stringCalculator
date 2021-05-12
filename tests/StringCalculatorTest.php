@@ -42,4 +42,11 @@ class StringCalculatorTest extends TestCase
 
         self::assertSame(14, $numbers->Add("2\n2,5,5"));
     }
+
+    public function testAddSupportDifferentDelimeters(): void
+    {
+        $numbers = new StringCalculator();
+
+        self::assertSame(14, $numbers->Add("//$\n2$2$5$5"));
+    }
 }
