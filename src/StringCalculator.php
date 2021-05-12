@@ -9,8 +9,12 @@ class StringCalculator
 
     public function Add(string $string):int
     {
-        if( "" === $string ) {
-            return $sum = 0;
+        $sum = 0;
+
+        if( 1 === strlen($string) ) {
+            $sum = (int) $string;
         }
+
+        return $sum;
     }
 }
