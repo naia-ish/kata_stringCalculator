@@ -36,4 +36,10 @@ class StringCalculatorTest extends TestCase
         self::assertSame(14, $numbers->Add("2,2,5,5"));
     }
 
+    public function testAddHandleNewLines(): void
+    {
+        $numbers = new StringCalculator();
+
+        self::assertSame(14, $numbers->Add("2\n2,5,5"));
+    }
 }
